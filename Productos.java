@@ -6,11 +6,11 @@ public class Productos {
     private int stock;
     private int cantidadMinima;
     private String descripcion;
-    private float precio;
+    private double precio;
     private List<DetallePedidos> detalleP;
     //private List<DetalleFactura> detalleF;
     public Productos(String idProducto,String nombreProducto, String descripcion,
-                     int stock, int cantidadMinima, float precio){
+                     int stock, int cantidadMinima, double precio){
         if(idProducto.contains(idProducto)){
             throw new Productos.idDuplicado("El ID ya existe");
         }
@@ -62,15 +62,15 @@ public class Productos {
         this.descripcion = descripcion;
     }
 
-    public float getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
     public void modificarProducto(String pIdProducto,String pNombreProducto, String pDescripcion,
-                                  int pStock, int pCantidadMinima, float pPrecio){
+                                  int pStock, int pCantidadMinima, double pPrecio){
         if(idProducto.contains(idProducto)){
             throw new Productos.idDuplicado("El ID ya existe");
         }

@@ -3,17 +3,14 @@ import java.util.List;
 
 public class Proveedores {
     private String nombreProveedor;
-    private List<String> telefonoProveedor= new ArrayList<>();
+    private List<String> telefonoProveedor = new ArrayList<>();
     private List<String> producto;
     private List<EncabezadoPedido> encabezadoP;
-    public Proveedores(String nombreProveedor, List<String> telefonoProveedor,
-                       List<String> producto){
-        if(telefonoProveedor.contains(telefonoProveedor)){
-            throw new Cliente.telefonoDuplicado("El telefono ya existe");
-        }
-        this.nombreProveedor= nombreProveedor;
-        this.telefonoProveedor=telefonoProveedor;
-        this.producto=producto;
+
+    public Proveedores(String nombreProveedor, List<String> telefonoProveedor, List<String> producto) {
+        this.nombreProveedor = nombreProveedor;
+        this.telefonoProveedor = telefonoProveedor;
+        this.producto = producto;
     }
 
     public String getNombreProveedor() {
@@ -39,21 +36,25 @@ public class Proveedores {
     public void setProducto(List<String> producto) {
         this.producto = producto;
     }
-    public void modificarProveedor(String pNombreProveedor, List<String> pTelefono,
-                                   List<String> producto){
-        if(telefonoProveedor.contains(pTelefono)){
-            throw new Productos.idDuplicado("El telefono ya existe");
-        }
-        this.nombreProveedor= pNombreProveedor;
-        this.telefonoProveedor=pTelefono;
-        this.producto=producto;
+
+    public void modificarProveedor(String pNombreProveedor, String pNuevoTelefono, List<String> pProducto) {
+        this.nombreProveedor = pNombreProveedor;
+        this.telefonoProveedor = List.of(pNuevoTelefono); // Solo se permite cambiar el número de teléfono
+        this.producto = pProducto;
     }
 
     @Override
     public String toString() {
         return "Proveedores" +
                 "\nNombreProveedor:" + nombreProveedor +
-                "\nTelefono Proveedor:"+ telefonoProveedor +
+                "\nTelefono Proveedor:" + telefonoProveedor +
                 "\nProducto:" + producto;
+    }
+
+    // Excepción para manejar teléfonos duplicados
+    public static class TelefonoDuplicado extends RuntimeException {
+        public TelefonoDuplicado(String message) {
+            super(message);
+        }
     }
 }
