@@ -8,34 +8,35 @@ public class Main {
         List<Proveedores> proveedores= new ArrayList<>();
         List<Cliente> clientes= new ArrayList<>();
         List<Productos> productos= new ArrayList<>();
-        Proveedores proveedores1= new Proveedores("", Collections.singletonList(""),
+        Proveedores proveedores1= new Proveedores("",(""),
                 Collections.singletonList(""));
         int op=0;
         do {
             System.out.println("----------Farmacia-----------");
             System.out.println("1. Ingresar Proveedor");
-            System.out.println("2. Modificar Proveedor");
-            System.out.println("3. Visualizar Proveedor");
-            System.out.println("4. Ingresar Producto Stock");
-            System.out.println("5. Modificar Producto Stock");
-            System.out.println("6. Visualizar Producto Stock");
-            System.out.println("7. Consultar Producto por Abastecer");
-            System.out.println("8. Realizar Pedido");
-            System.out.println("9. Modificar Pedido");
-            System.out.println("10. Visualizar Pedido");
-            System.out.println("11. Estado del Pedido");
-            System.out.println("12. Consultar Pedidos por Producto");
-            System.out.println("13. Consultar Pedidos por Proveedor");
-            System.out.println("14. Ingresar Cliente");
-            System.out.println("15. Modificar Cliente");
-            System.out.println("16. Visualizar Cliente");
-            System.out.println("17. Consultar facturas del Cliente");
-            System.out.println("18. Generar Factura");
-            System.out.println("19. Modificar Factura");
-            System.out.println("20. Visualizar Ingreso");
-            System.out.println("21. Visualizar Egresos");
-            System.out.println("22. Visualizar Estado financiero");
-            System.out.println("23. Salir\n");
+            System.out.println("2. Agregar un producto al proveedor");
+            System.out.println("3. Modificar Proveedor");
+            System.out.println("4. Visualizar Proveedor");
+            System.out.println("5. Ingresar Producto Stock");
+            System.out.println("6. Modificar Producto Stock");
+            System.out.println("7. Visualizar Producto Stock");
+            System.out.println("8. Consultar Producto por Abastecer");
+            System.out.println("9. Realizar Pedido");
+            System.out.println("10. Modificar Pedido");
+            System.out.println("11. Visualizar Pedido");
+            System.out.println("12. Estado del Pedido");
+            System.out.println("13. Consultar Pedidos por Producto");
+            System.out.println("14. Consultar Pedidos por Proveedor");
+            System.out.println("15. Ingresar Cliente");
+            System.out.println("16. Modificar Cliente");
+            System.out.println("17. Visualizar Cliente");
+            System.out.println("18. Consultar facturas del Cliente");
+            System.out.println("19. Generar Factura");
+            System.out.println("20. Modificar Factura");
+            System.out.println("21. Visualizar Ingreso");
+            System.out.println("22. Visualizar Egresos");
+            System.out.println("23. Visualizar Estado financiero");
+            System.out.println("24. Salir\n");
 
             System.out.println("Ingrese una opcion: ");
             op= sc.nextInt();
@@ -45,6 +46,9 @@ public class Main {
                     ingresarProveedor((ArrayList<Proveedores>) proveedores);
                 }break;
                 case 2:{
+                    ingresarProveedor((ArrayList<Proveedores>) proveedores);
+                }break;
+                case 3:{
                     System.out.println("Ingrese un telefono para modificar");
                     telefono= sc.next();
                     Proveedores proveedorEncontrado= buscarProveedor(proveedores, telefono);
@@ -61,13 +65,13 @@ public class Main {
                         System.out.println("Proveedor no encontrado");
                     }
                 }break;
-                case 3:{
+                case 4:{
                     visualizarProveedor((ArrayList<Proveedores>) proveedores);
                 }break;
-                case 4:{
+                case 5:{
                     ingresarProductoStock((ArrayList<Productos>) productos);
                 }break;
-                case 5:{
+                case 6:{
                     System.out.println("Ingrese el codigo del producto para modificar");
                     String idProducto= sc.next();
                     Productos productoEncontrado= buscarProducto(productos, idProducto);
@@ -90,25 +94,34 @@ public class Main {
                         System.out.println("Producto no encontrado");
                     }
                 }break;
-                case 6:{
+                case 7:{
                     visualizarProductos((ArrayList<Productos>) productos);
                 }break;
-                case 7:{
+                case 8:{
+
+                }break;
+                case 9:{
+
+                }break;
+                case 10:{
+
+                }break;
+                case 11:{
 
                 }break;
             }
-        }while(op!=23);
+        }while(op!=24);
     }
 
     public static void ingresarProveedor(ArrayList<Proveedores> lista){
         String nombreProveedor;
-        List<String> telefono;
+        String telefono;
         List<String> productos;
         Scanner sc= new Scanner(System.in);
         System.out.println("Ingrese el nombre del proveedor");
         nombreProveedor= sc.next();
         System.out.println("Ingrese el telefono del proveedor");
-        telefono= Collections.singletonList(sc.next());
+        telefono= sc.next();
         System.out.println("Ingrese el producto de su proveedor");
         productos= Collections.singletonList(sc.next());
         lista.add(new Proveedores(nombreProveedor,telefono,productos));
@@ -153,7 +166,8 @@ public class Main {
         while (it.hasNext()){
             System.out.println(it.next());
         }
-    }public static void visualizarProductos(ArrayList<Productos> lista){
+    }
+    public static void visualizarProductos(ArrayList<Productos> lista){
         Iterator<Productos> it= lista.iterator();
         while (it.hasNext()){
             System.out.println(it.next());

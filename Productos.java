@@ -11,9 +11,6 @@ public class Productos {
     //private List<DetalleFactura> detalleF;
     public Productos(String idProducto,String nombreProducto, String descripcion,
                      int stock, int cantidadMinima, double precio){
-        if(idProducto.contains(idProducto)){
-            throw new Productos.idDuplicado("El ID ya existe");
-        }
         this.idProducto= idProducto;
         this.nombreProducto= nombreProducto;
         this.descripcion= descripcion;
@@ -71,9 +68,6 @@ public class Productos {
     }
     public void modificarProducto(String pIdProducto,String pNombreProducto, String pDescripcion,
                                   int pStock, int pCantidadMinima, double pPrecio){
-        if(idProducto.contains(idProducto)){
-            throw new Productos.idDuplicado("El ID ya existe");
-        }
         this.idProducto= pIdProducto;
         this.nombreProducto= pNombreProducto;
         this.descripcion= pDescripcion;
@@ -81,9 +75,5 @@ public class Productos {
         this.cantidadMinima= pCantidadMinima;
         this.precio=pPrecio;
     }
-    public static class idDuplicado extends RuntimeException{
-        public idDuplicado(String mensaje){
-            super (mensaje);
-        }
-    }
+    //consultas productos: se ha abastecido el ultimo mes (rango de fecha), detalles,
 }

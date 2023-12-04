@@ -8,10 +8,9 @@ public class EncabezadoPedido {
 
     private List<DetallePedidos> detalleP;
     public EncabezadoPedido(Proveedores proveedores, Fecha fecha, boolean
-                            estadoPedido, List<DetallePedidos> detalleP){
+                            estadoPedido){
         this.proveedores= proveedores;
         this.estadoPedido= false;
-        this.detalleP=detalleP;
         this.fecha= fecha;
     }
     public Proveedores getProveedores() {
@@ -32,10 +31,8 @@ public class EncabezadoPedido {
     public Fecha fecha(){
         return fecha;
     }
-    public void modificarPedido(Proveedores pProveedor, Fecha pFecha,
-                                 List<DetallePedidos> pDetalleP){
+    public void modificarEncabezado(Proveedores pProveedor, Fecha pFecha){
         this.proveedores= pProveedor;
         this.fecha=pFecha;
-        this.detalleP= pDetalleP;
     }
 }

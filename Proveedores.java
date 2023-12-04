@@ -3,16 +3,19 @@ import java.util.List;
 
 public class Proveedores {
     private String nombreProveedor;
-    private List<String> telefonoProveedor = new ArrayList<>();
+    private String telefonoProveedor;
     private List<String> producto;
     private List<EncabezadoPedido> encabezadoP;
+    private Fecha fecha;
 
-    public Proveedores(String nombreProveedor, List<String> telefonoProveedor, List<String> producto) {
+    public Proveedores(String nombreProveedor, String telefonoProveedor, List<String> producto) {
         this.nombreProveedor = nombreProveedor;
         this.telefonoProveedor = telefonoProveedor;
         this.producto = producto;
-    }
-
+    }//que permita los cambios de cambiar o eliminar productos.
+    //metodo de Agregar productos a la clase y metodo buscar
+    //se puede utilizar el remover
+    // no se puede eliminar una lista de pedidos o productos
     public String getNombreProveedor() {
         return nombreProveedor;
     }
@@ -21,11 +24,11 @@ public class Proveedores {
         this.nombreProveedor = nombreProveedor;
     }
 
-    public List<String> getTelefonoProveedor() {
+    public String getTelefonoProveedor() {
         return telefonoProveedor;
     }
 
-    public void setTelefonoProveedor(List<String> telefonoP) {
+    public void setTelefonoProveedor(String telefonoP) {
         this.telefonoProveedor = telefonoP;
     }
 
@@ -39,8 +42,14 @@ public class Proveedores {
 
     public void modificarProveedor(String pNombreProveedor, String pNuevoTelefono, List<String> pProducto) {
         this.nombreProveedor = pNombreProveedor;
-        this.telefonoProveedor = List.of(pNuevoTelefono); // Solo se permite cambiar el número de teléfono
+        this.telefonoProveedor = pNuevoTelefono;
         this.producto = pProducto;
+    }
+    public void agregarProducto(String nuevoProducto) {
+        if (producto == null) {
+            producto = new ArrayList<>();
+        }
+        producto.add(nuevoProducto);
     }
 
     @Override
@@ -50,11 +59,5 @@ public class Proveedores {
                 "\nTelefono Proveedor:" + telefonoProveedor +
                 "\nProducto:" + producto;
     }
-
-    // Excepción para manejar teléfonos duplicados
-    public static class TelefonoDuplicado extends RuntimeException {
-        public TelefonoDuplicado(String message) {
-            super(message);
-        }
-    }
 }
+//consulta cuantos pedidos le he hecho al proveedor, cual es total a pagar de un proveedor, cuantos pedidos se le ha hecho desde cierta fecha...

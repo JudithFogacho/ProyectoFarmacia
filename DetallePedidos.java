@@ -2,21 +2,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DetallePedidos {
-    private List<Productos> productos;
+    private Productos productos;
     private EncabezadoPedido encabezadoPedido;
     private double total;
-    public DetallePedidos(List<Productos> productos, EncabezadoPedido encabezadoPedido){
-        this.productos= new ArrayList<>();
+    public DetallePedidos(Productos productos, EncabezadoPedido encabezadoPedido){
+        this.productos= productos;
         this.encabezadoPedido=encabezadoPedido;
     }
-    public List<Productos> darProducto(){
+    public Productos darProducto(){
         return productos;
     }
     public double calcularTotal(){
         total=0.0;
-        for(Productos p: productos){
-            total+=p.getPrecio();
-        }
+        total= darProducto().getPrecio()* darProducto().getStock();
         return total;
     }
 }
